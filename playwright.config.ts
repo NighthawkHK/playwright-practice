@@ -1,3 +1,5 @@
+import 'dotenv/config';
+import { env } from "./env";
 import { defineConfig, devices } from "@playwright/test";
 
 /**
@@ -9,7 +11,7 @@ import { defineConfig, devices } from "@playwright/test";
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
-export default defineConfig<DefaultUserOption>({
+export default defineConfig({
   testDir: "./tests",
   fullyParallel: false,
   workers: 1,
@@ -21,7 +23,7 @@ export default defineConfig<DefaultUserOption>({
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    baseURL: "https://shopdemo-alex-hot.koyeb.app",
+    baseURL: env.FRONTEND_URL,
     headless: process.env.CI ? true : false,
   },
   projects: [
@@ -29,6 +31,12 @@ export default defineConfig<DefaultUserOption>({
       name: "chromium",
       use: {
         ...devices["Desktop Chrome"],
+      },
+    },
+    {
+      name: "firefox",
+      use: {
+        ...devices['Desktop Firefox'],
       },
     },
   ],

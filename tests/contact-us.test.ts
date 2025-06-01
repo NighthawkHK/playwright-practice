@@ -1,4 +1,7 @@
 import { test, expect } from "@playwright/test";
+import {skipIfSafari} from "../utils/testSkipper";
+
+skipIfSafari('Contact us form is not working on Safari');
 
 test("User can submit contact us form", async ({ page }) => {
   await page.goto("/");

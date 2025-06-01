@@ -1,8 +1,9 @@
 {
-  "name": "pwso_june_2024",
+  "name": "playwright-practice",
   "version": "1.0.0",
-  "description": "Demo project for pwso_june_2024",
+  "description": "Demo project on Playwright",
   "scripts": {
+    "test+env": "node --env-file=.env node_modules/@playwright/test/cli.js test",
     "test": "playwright test"
   },
   "keywords": [],
@@ -12,5 +13,9 @@
     "@playwright/test": "1.44.1",
     "@types/node": "^20.14.2",
     "mongodb": "^6.7.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "envalid": "^8.0.0"
   }
 }
